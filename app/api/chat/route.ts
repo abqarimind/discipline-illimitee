@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const WEBHOOK_URL =
-  process.env.NEXT_PUBLIC_WEBHOOK_URL ||
-  'https://n8n.srv860867.hstgr.cloud/webhook/pierre-qualif-agent';
+const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_URL;
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,6 +11,18 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Message is required' },
         { status: 400 }
+      );
+    }
+
+    if (!WEBHOOK_URL) {
+      console.error('NEXT_PUBLIC_WEBHOOK_URL is not defined');
+      return NextResponse.json(
+        {
+          success: false,
+          response: "Je comprends. Continue à me parler de ta situation. Plus tu es précis, plus je peux t'aider à trouver la solution adaptée.",
+          error: 'Webhook URL not configured',
+        },
+        { status: 200 }
       );
     }
 
