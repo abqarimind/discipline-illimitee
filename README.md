@@ -2,28 +2,57 @@
 
 Site web dynamique pour Discipline Illimitée™ par Pierre Amougou, construit avec Next.js, TypeScript et Tailwind CSS.
 
-## Fonctionnalités
+## 🚀 Déploiement
 
-- **Site dynamique Next.js** : Performance optimale avec rendu côté serveur
-- **Agent conversationnel intégré** : Chatbot connecté au webhook n8n pour qualifier les prospects
-- **Design responsive** : Interface adaptée à tous les écrans
-- **Animations fluides** : Transitions et animations au scroll
+**Site en production:** [Voir le guide de déploiement](GUIDE_DEPLOIEMENT_NETLIFY.md)
+
+Le site est déployé sur Netlify avec déploiement automatique depuis GitHub.
+
+## ✨ Fonctionnalités
+
+- **Next.js 16.1.1** avec Turbopack : Performance optimale
+- **Agent conversationnel IA** : Chat intégré avec webhook N8N
+  - Gestion de session (sessionId)
+  - Suggestions dynamiques
+  - Support Markdown complet (gras, listes, code, etc.)
+- **Tailwind CSS v4** avec Typography plugin
+- **Design responsive** : Mobile-first, adapté à tous les écrans
+- **Section Médias** : 13 apparitions médias (5 images, 8 placeholders)
 - **TypeScript** : Code type-safe pour une meilleure maintenabilité
+- **Animations fluides** : Transitions au scroll
 
-## Configuration du Webhook
+## 🤖 Agent Conversationnel
 
-L'agent conversationnel est connecté au webhook suivant :
+### Webhook Configuration
+
+**URL Production:**
 ```
-https://n8n.srv860867.hstgr.cloud/webhook-test/pierre-qualif-agent
+https://n8n.srv860867.hstgr.cloud/webhook/pierre-qualif-agent
 ```
 
-Les messages des utilisateurs sont envoyés à ce webhook en JSON :
+**Payload envoyé:**
 ```json
 {
   "message": "Le message de l'utilisateur",
-  "timestamp": "2024-12-25T10:30:00.000Z"
+  "sessionId": "session_1735141234567_abc123xyz",
+  "timestamp": "2024-12-25T10:30:45.123Z",
+  "source": "discipline-illimitee-website"
 }
 ```
+
+**Réponse attendue:**
+```json
+[
+  {
+    "output": {
+      "output": "Texte de la réponse en **Markdown**...",
+      "suggestions": ["Option 1", "Option 2", "Option 3"]
+    }
+  }
+]
+```
+
+📚 **Documentation complète:** [MARKDOWN_GUIDE.md](MARKDOWN_GUIDE.md) | [INTEGRATION_AGENT_COMPLETE.md](INTEGRATION_AGENT_COMPLETE.md)
 
 ## Installation
 
@@ -72,7 +101,17 @@ discipline-illimitee/
 
 ```
 
-## Personnalisation
+## 📚 Documentation
+
+- **[GUIDE_DEPLOIEMENT_NETLIFY.md](GUIDE_DEPLOIEMENT_NETLIFY.md)** - Guide complet de déploiement GitHub + Netlify
+- **[COMMANDES_GIT_GITHUB.md](COMMANDES_GIT_GITHUB.md)** - Aide-mémoire Git & GitHub
+- **[INTEGRATION_AGENT_COMPLETE.md](INTEGRATION_AGENT_COMPLETE.md)** - Documentation technique de l'agent
+- **[MARKDOWN_GUIDE.md](MARKDOWN_GUIDE.md)** - Guide Markdown pour l'agent N8N
+- **[CHANGELOG.md](CHANGELOG.md)** - Historique des versions
+- **[WEBHOOK_TEST_GUIDE.md](WEBHOOK_TEST_GUIDE.md)** - Guide de test du webhook
+- **[IMAGES_MEDIAS_STATUS.md](IMAGES_MEDIAS_STATUS.md)** - Statut des images médias
+
+## 🎨 Personnalisation
 
 ### Modifier le webhook
 
