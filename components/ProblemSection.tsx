@@ -12,20 +12,25 @@ export default function ProblemSection() {
               <strong className="text-black">
                 &quot;cette fois, c&apos;est la bonne&quot;
               </strong>
-              . Et quelques jours plus tard, tu reviens exactement au même point.
+              . Et quelques jours plus tard… tu reviens exactement au même point.
             </p>
+
+            <p className="text-lg text-gray-600 mb-6">
+              Tu sais quoi faire. Mais tu ne le fais pas.
+            </p>
+
             <p className="text-lg text-gray-600 mb-6">
               Le soir, tu culpabilises. Tu as l&apos;impression de gâcher ton
-              potentiel. Et quand tu vois les autres réussir, tu te demandes :{' '}
+              potentiel. Et quand tu vois les autres avancer, tu te demandes :{' '}
               <strong className="text-black">
-                &quot;Pourquoi eux, et pas moi ?&quot;
+                &quot;Pourquoi eux… et pas moi ?&quot;
               </strong>
             </p>
 
             <ul className="mt-10 space-y-0">
               {[
-                'Tu procrastines malgré tes objectifs clairs',
-                'Tu travailles dur mais les résultats ne suivent pas',
+                'Tu procrastines malgré des objectifs clairs',
+                'Tu travailles dur, mais les résultats ne suivent pas',
                 'Tu attends la motivation pour passer à l\'action',
                 'Tu n\'as aucune structure claire pour avancer',
               ].map((item, idx) => (
@@ -49,11 +54,10 @@ export default function ProblemSection() {
                 &quot;
               </div>
               <p className="relative z-10 text-2xl font-medium leading-relaxed mb-6">
-                Le vrai problème, ce n&apos;est pas que tu manques de capacités.
-                C&apos;est cette sensation constante de ne pas te donner à fond.
+                Le pire ? Ce n&apos;est pas de ne pas avancer. C&apos;est de savoir que tu pourrais faire beaucoup plus et de ne jamais t&apos;y tenir.
               </p>
               <cite className="not-italic text-sm text-gray-600 uppercase tracking-[0.1em]">
-                — Le cycle de la procrastination
+                — Le vrai problème
               </cite>
             </div>
           </div>

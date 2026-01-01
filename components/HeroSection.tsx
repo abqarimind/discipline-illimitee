@@ -18,20 +18,20 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
       {/* Decorative line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent to-gray-600"></div>
 
-      <span className="inline-block px-5 py-2 border border-gray-600 text-xs tracking-[0.2em] uppercase mb-10 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.2s]">
-        Sciences Cognitives × Performance
-      </span>
-
-      <h1 className="font-bebas text-[clamp(48px,10vw,120px)] mb-6 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.4s]">
-        DISCIPLINE ILLIMITÉE
-        <span className="block text-gray-400 text-[0.4em] tracking-[0.1em]">
-          La méthode pour reprendre le contrôle
-        </span>
+      <h1 className="font-bebas text-[clamp(48px,10vw,120px)] mb-8 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.2s]">
+        DISCIPLINE ILLIMITÉE™
       </h1>
 
-      <p className="text-lg text-gray-400 max-w-[600px] mb-16 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.6s]">
-        Tu sais ce que tu dois faire, mais tu ne le fais pas. Ce n&apos;est pas un
-        problème de motivation. C&apos;est un problème de système.
+      <p className="text-2xl md:text-3xl font-semibold text-white max-w-[700px] mb-6 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.4s]">
+        Arrête de dépendre de la motivation.
+      </p>
+
+      <p className="text-xl md:text-2xl text-gray-300 max-w-[800px] mb-8 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.6s]">
+        Construis un système qui te fait avancer, même quand tu as la flemme.
+      </p>
+
+      <p className="text-base md:text-lg text-gray-400 max-w-[700px] mb-16 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.8s]">
+        Un système de discipline structuré pour reprendre le contrôle de ton temps et de ton énergie en accord avec le fonctionnement de ton cerveau 🧠
       </p>
 
       {/* Video */}
@@ -70,7 +70,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         onClick={onOpenModal}
         className="inline-flex items-center gap-3 px-12 py-5 bg-white text-black font-semibold text-base uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(255,255,255,0.1)] transition-all opacity-0 animate-[fadeInUp_0.8s_ease_forwards_1s] group"
       >
-        Découvrir mon profil
+        Accéder au diagnostic gratuit
         <svg
           viewBox="0 0 24 24"
           fill="none"
