@@ -111,13 +111,16 @@ export default function MediaSection() {
               rel="noopener noreferrer"
               className="group relative overflow-hidden bg-gray-800 border border-gray-700 hover:border-white transition-all hover:-translate-y-1"
             >
-              {/* Image placeholder - remplacez par vos vraies images */}
+              {/* Image */}
               <div className="relative aspect-video bg-gray-700 overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-sm uppercase tracking-wider">
-                  {item.title}
-                </div>
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-all duration-500 ease-in-out grayscale group-hover:grayscale-0"
+                />
                 {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
                   <svg
                     className="w-12 h-12 text-white"
                     fill="none"

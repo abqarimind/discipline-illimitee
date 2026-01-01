@@ -7,7 +7,6 @@ import TruthSection from '@/components/TruthSection';
 import SolutionSection from '@/components/SolutionSection';
 import TransformationSection from '@/components/TransformationSection';
 import AuthoritySection from '@/components/AuthoritySection';
-import VideoSection from '@/components/VideoSection';
 import MediaSection from '@/components/MediaSection';
 import FAQSection from '@/components/FAQSection';
 import FinalCTASection from '@/components/FinalCTASection';
@@ -35,7 +34,6 @@ export default function Home() {
       <SolutionSection />
       <TransformationSection />
       <AuthoritySection />
-      <VideoSection />
       <MediaSection />
       <FAQSection />
       <FinalCTASection onOpenModal={openModal} />

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface HeroSectionProps {
   onOpenModal: () => void;
@@ -36,27 +37,44 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
 
       {/* Video */}
       <div className="w-full max-w-[800px] mx-auto mb-12 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.8s]">
-        <div className="relative pb-[56.25%] bg-gray-800 border border-gray-600">
+        <div className="relative pb-[56.25%] bg-gray-800 border border-gray-600 overflow-hidden group">
           {!videoLoaded ? (
             <div
-              className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors"
+              className="absolute inset-0 cursor-pointer"
               onClick={playVideo}
             >
-              <div className="w-20 h-20 border-2 border-white rounded-full flex items-center justify-center mb-4 hover:scale-110 hover:bg-white transition-all group">
-                <svg
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 fill-white ml-1 group-hover:fill-black transition-colors"
-                >
-                  <polygon points="5,3 19,12 5,21" />
-                </svg>
+              {/* Miniature vidéo avec effet grayscale */}
+              <div className="relative w-full h-full">
+                <Image
+                  src="/images/video-thumbnail.jpg"
+                  alt="Miniature vidéo - Pierre Amougou"
+                  fill
+                  className="object-cover transition-all duration-500 ease-in-out grayscale group-hover:grayscale-0"
+                  priority
+                />
+
+                {/* Overlay sombre */}
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500" />
               </div>
-              <span className="text-sm tracking-[0.1em] uppercase text-gray-400">
-                Regarder la vidéo
-              </span>
+
+              {/* Bouton Play centré */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="w-8 h-8 fill-black ml-1"
+                  >
+                    <polygon points="5,3 19,12 5,21" />
+                  </svg>
+                </div>
+                <span className="text-sm tracking-[0.1em] uppercase text-white font-medium">
+                  Regarder la vidéo
+                </span>
+              </div>
             </div>
           ) : (
             <iframe
-              src="YOUR_VIDEO_URL"
+              src="https://www.youtube.com/embed/yH6tBmKQ04A?autoplay=1"
               className="absolute inset-0 w-full h-full"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

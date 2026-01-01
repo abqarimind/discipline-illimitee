@@ -1,3 +1,7 @@
+'use client';
+
+import Image from 'next/image';
+
 export default function AuthoritySection() {
   const credentials = [
     'ENS Paris',
@@ -10,10 +14,15 @@ export default function AuthoritySection() {
     <section className="bg-white text-black py-32">
       <div className="container max-w-[1200px] mx-auto px-6">
         <div className="grid md:grid-cols-[400px_1fr] gap-20 items-center">
-          <div className="relative max-w-[400px] mx-auto md:mx-0">
+          <div className="relative max-w-[400px] mx-auto md:mx-0 group">
             <div className="absolute top-6 left-6 right-[-24px] bottom-[-24px] border border-gray-200 z-0"></div>
-            <div className="relative z-10 aspect-[3/4] bg-gray-100 flex items-center justify-center text-sm text-gray-400 uppercase tracking-[0.1em]">
-              Photo Pierre Amougou
+            <div className="relative z-10 aspect-[3/4] bg-gray-100 overflow-hidden">
+              <Image
+                src="/images/pierre-photo.jpg"
+                alt="Pierre Amougou"
+                fill
+                className="object-cover transition-all duration-500 ease-in-out grayscale group-hover:grayscale-0"
+              />
             </div>
           </div>
 
