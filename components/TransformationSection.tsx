@@ -79,17 +79,17 @@ export default function TransformationSection() {
               >
                 {/* Illustration */}
                 <motion.div
-                  className="w-40 h-40 md:w-48 md:h-48 mb-8 relative"
+                  className="w-32 h-32 mb-6 relative"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="w-full h-full flex items-center justify-center p-4 rounded-lg bg-white/5 backdrop-blur-sm">
+                  <div className="w-full h-full flex items-center justify-center">
                     <Image
                       src={item.icon}
                       alt={item.text}
-                      width={192}
-                      height={192}
-                      className="object-contain filter invert brightness-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
+                      width={128}
+                      height={128}
+                      className="object-contain filter invert"
                     />
                   </div>
                 </motion.div>
@@ -133,17 +133,17 @@ export default function TransformationSection() {
               >
                 {/* Illustration */}
                 <motion.div
-                  className="w-40 h-40 md:w-48 md:h-48 mb-8 relative"
+                  className="w-32 h-32 mb-6 relative"
                   whileHover={{ scale: 1.1, rotate: -5 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="w-full h-full flex items-center justify-center p-4 rounded-lg bg-gray-50 border border-gray-200">
+                  <div className="w-full h-full flex items-center justify-center">
                     <Image
                       src={item.icon}
                       alt={item.text}
-                      width={192}
-                      height={192}
-                      className="object-contain drop-shadow-md"
+                      width={128}
+                      height={128}
+                      className="object-contain"
                     />
                   </div>
                 </motion.div>
