@@ -89,7 +89,7 @@ export default function TransformationSection() {
                       alt={item.text}
                       width={128}
                       height={128}
-                      className="object-contain filter invert"
+                      className="object-contain"
                     />
                   </div>
                 </motion.div>
