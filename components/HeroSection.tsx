@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 interface HeroSectionProps {
   onOpenModal: () => void;
@@ -17,27 +18,61 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-16 relative">
       {/* Decorative line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent to-gray-600"></div>
+      <motion.div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-transparent to-gray-600"
+        initial={{ height: 0 }}
+        animate={{ height: 80 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      />
 
-      <h1 className="font-bebas text-[clamp(48px,10vw,120px)] mb-8 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.2s]">
+      <motion.h1
+        className="font-bebas text-[clamp(48px,10vw,120px)] mb-8"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         DISCIPLINE ILLIMITÉE™
-      </h1>
+      </motion.h1>
 
-      <p className="text-2xl md:text-3xl font-semibold text-white max-w-[700px] mb-6 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.4s]">
+      <motion.p
+        className="text-2xl md:text-3xl font-semibold text-white max-w-[700px] mb-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+      >
         Arrête de dépendre de la motivation.
-      </p>
+      </motion.p>
 
-      <p className="text-xl md:text-2xl text-gray-300 max-w-[800px] mb-8 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.6s]">
+      <motion.p
+        className="text-xl md:text-2xl text-gray-300 max-w-[800px] mb-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+      >
         Construis un système qui te fait avancer, même quand tu as la flemme.
-      </p>
+      </motion.p>
 
-      <p className="text-base md:text-lg text-gray-400 max-w-[700px] mb-16 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.8s]">
+      <motion.p
+        className="text-base md:text-lg text-gray-400 max-w-[700px] mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+      >
         Un système de discipline structuré pour reprendre le contrôle de ton temps et de ton énergie en accord avec le fonctionnement de ton cerveau 🧠
-      </p>
+      </motion.p>
 
       {/* Video */}
-      <div className="w-full max-w-[800px] mx-auto mb-12 opacity-0 animate-[fadeInUp_0.8s_ease_forwards_0.8s]">
-        <div className="relative pb-[56.25%] bg-gray-800 border border-gray-600 overflow-hidden group">
+      <motion.div
+        className="w-full max-w-[800px] mx-auto mb-12"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
+      >
+        <motion.div
+          className="relative pb-[56.25%] bg-gray-800 border border-gray-600 overflow-hidden group"
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.3 }}
+        >
           {!videoLoaded ? (
             <div
               className="absolute inset-0 cursor-pointer"
@@ -81,24 +116,35 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
               allowFullScreen
             />
           )}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <button
+      <motion.button
         onClick={onOpenModal}
-        className="inline-flex items-center gap-3 px-12 py-5 bg-white text-black font-semibold text-base uppercase tracking-[0.1em] hover:-translate-y-0.5 hover:shadow-[0_20px_40px_rgba(255,255,255,0.1)] transition-all opacity-0 animate-[fadeInUp_0.8s_ease_forwards_1s] group"
+        className="inline-flex items-center gap-3 px-12 py-5 bg-white text-black font-semibold text-base uppercase tracking-[0.1em] group"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 1.1, ease: "easeOut" }}
+        whileHover={{
+          y: -3,
+          boxShadow: "0 8px 24px rgba(255,255,255,0.2)",
+        }}
+        whileTap={{ scale: 0.98 }}
       >
         Accéder au diagnostic gratuit
-        <svg
+        <motion.svg
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
-          className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+          className="w-5 h-5"
+          initial={{ x: 0 }}
+          whileHover={{ x: 5 }}
+          transition={{ duration: 0.25 }}
         >
           <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      </button>
+        </motion.svg>
+      </motion.button>
     </section>
   );
 }

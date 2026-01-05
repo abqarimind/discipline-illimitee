@@ -124,3 +124,21 @@ h1, h2, h3 {
   font-style: italic;
   margin: 1em 0;
 }
+
+/* Accessibilité: Réduire les animations pour les utilisateurs préférant moins de mouvement */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Performance: Force GPU acceleration pour les animations */
+.will-change-transform {
+  will-change: transform;
+  transform: translateZ(0);
+}

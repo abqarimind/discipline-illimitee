@@ -12,6 +12,8 @@ import FAQSection from '@/components/FAQSection';
 import FinalCTASection from '@/components/FinalCTASection';
 import Footer from '@/components/Footer';
 import ChatModal from '@/components/ChatModal';
+import ScrollProgress from '@/components/ScrollProgress';
+import StickyCTA from '@/components/StickyCTA';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,18 +29,22 @@ export default function Home() {
   };
 
   return (
-    <main>
-      <HeroSection onOpenModal={openModal} />
-      <ProblemSection />
-      <TruthSection />
-      <SolutionSection />
-      <TransformationSection />
-      <AuthoritySection />
-      <MediaSection />
-      <FAQSection />
-      <FinalCTASection onOpenModal={openModal} />
-      <Footer />
-      <ChatModal isOpen={isModalOpen} onClose={closeModal} />
-    </main>
+    <>
+      <ScrollProgress />
+      <StickyCTA onOpenModal={openModal} />
+      <main>
+        <HeroSection onOpenModal={openModal} />
+        <ProblemSection />
+        <TruthSection />
+        <SolutionSection />
+        <TransformationSection />
+        <AuthoritySection />
+        <MediaSection />
+        <FAQSection />
+        <FinalCTASection onOpenModal={openModal} />
+        <Footer />
+        <ChatModal isOpen={isModalOpen} onClose={closeModal} />
+      </main>
+    </>
   );
 }

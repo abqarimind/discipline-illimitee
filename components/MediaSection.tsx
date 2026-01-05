@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function MediaSection() {
   const [showAll, setShowAll] = useState(false);
@@ -92,7 +93,13 @@ export default function MediaSection() {
   return (
     <section className="py-32 bg-black text-white">
       <div className="container max-w-[1200px] mx-auto px-6">
-        <div className="text-center mb-20">
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="font-bebas text-[clamp(40px,6vw,72px)] mb-6">
             APPARITIONS MÉDIAS
           </h2>
@@ -100,25 +107,36 @@ export default function MediaSection() {
             Retrouvez Pierre dans les médias nationaux et découvrez son parcours
             inspirant
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {displayedItems.map((item, idx) => (
-            <a
+            <motion.a
               key={idx}
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative overflow-hidden bg-gray-800 border border-gray-700 hover:border-white transition-all hover:-translate-y-1"
+              className="group relative overflow-hidden bg-gray-800 border border-gray-700 hover:border-white transition-all"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ y: -5, boxShadow: "0 12px 40px rgba(0,0,0,0.3)" }}
             >
               {/* Image */}
               <div className="relative aspect-video bg-gray-700 overflow-hidden">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-all duration-500 ease-in-out grayscale group-hover:grayscale-0"
-                />
+                <motion.div
+                  className="w-full h-full"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-all duration-500 ease-in-out grayscale group-hover:grayscale-0"
+                  />
+                </motion.div>
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
                   <svg
@@ -147,11 +165,14 @@ export default function MediaSection() {
                 </h3>
                 <p className="text-sm text-gray-400 flex items-center gap-2">
                   Voir le contenu
-                  <svg
-                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  <motion.svg
+                    className="w-4 h-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 3 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <path
                       strokeLinecap="round"
@@ -159,10 +180,10 @@ export default function MediaSection() {
                       strokeWidth={2}
                       d="M9 5l7 7-7 7"
                     />
-                  </svg>
+                  </motion.svg>
                 </p>
               </div>
-            </a>
+            </motion.a>
           ))}
         </div>
 

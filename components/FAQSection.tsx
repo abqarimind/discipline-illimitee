@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function FAQSection() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -40,36 +41,69 @@ export default function FAQSection() {
   return (
     <section className="bg-white text-black py-32">
       <div className="container max-w-[1200px] mx-auto px-6">
-        <div className="text-center mb-16">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="font-bebas text-[clamp(40px,6vw,64px)]">
             QUESTIONS FRÉQUENTES
           </h2>
-        </div>
+        </motion.div>
 
         <div className="max-w-[800px] mx-auto">
           {faqs.map((faq, idx) => (
-            <div key={idx} className="border-b border-gray-200">
-              <button
+            <motion.div
+              key={idx}
+              className={`border-b border-gray-200 transition-colors ${
+                activeIndex === idx ? 'bg-gray-50/50 border-l-2 border-l-black pl-4 -ml-4' : ''
+              }`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+            >
+              <motion.button
                 onClick={() => toggleFAQ(idx)}
                 className="w-full flex justify-between items-center py-6 text-left text-lg font-medium hover:text-gray-600 transition-colors"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
               >
                 <span>{faq.question}</span>
-                <span
-                  className={`text-2xl transition-transform ${
-                    activeIndex === idx ? 'rotate-45' : ''
-                  }`}
+                <motion.span
+                  className="text-2xl"
+                  animate={{
+                    rotate: activeIndex === idx ? 45 : 0,
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
                   +
-                </span>
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  activeIndex === idx ? 'max-h-[300px]' : 'max-h-0'
-                }`}
-              >
-                <p className="pb-6 text-gray-600 leading-relaxed">{faq.answer}</p>
-              </div>
-            </div>
+                </motion.span>
+              </motion.button>
+              <AnimatePresence>
+                {activeIndex === idx && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0, y: -10 }}
+                    animate={{ height: "auto", opacity: 1, y: 0 }}
+                    exit={{ height: 0, opacity: 0, y: -10 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="overflow-hidden"
+                  >
+                    <motion.p
+                      className="pb-6 text-gray-600 leading-relaxed"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3, delay: 0.1 }}
+                    >
+                      {faq.answer}
+                    </motion.p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
         </div>
       </div>
