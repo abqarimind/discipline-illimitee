@@ -21,12 +21,16 @@ export default function ChatModal({ isOpen, onClose }: ChatModalProps) {
       role: 'agent',
       content: `Salut. Ici l'IA de Pierre. On ne va pas tourner autour du pot.
 
-Si tu es là, c'est que tu veux plus que ce que le système te propose. C'est quoi ton plus gros frein aujourd'hui ?`,
+Ce diagnostic prend moins de 2 minutes.
+
+Il n'est pas là pour te motiver, mais pour identifier précisément ce qui te bloque — et comment y remédier.
+
+Pour commencer, comment tu t'appelles ?`,
     },
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [showOptions, setShowOptions] = useState(true);
+  const [showOptions, setShowOptions] = useState(false);
   const [sessionId, setSessionId] = useState<string>('');
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
@@ -175,44 +179,6 @@ Si tu es là, c'est que tu veux plus que ce que le système te propose. C'est qu
                   ))}
                 </div>
               )}
-              {idx === 0 && showOptions && (
-                <div className="flex flex-col gap-2 mt-4">
-                  <button
-                    onClick={() =>
-                      handleSelectOption(
-                        'discipline',
-                        'La Discipline — Je sais quoi faire, mais je ne le fais pas'
-                      )
-                    }
-                    className="p-4 border border-gray-200 text-left text-sm hover:border-black hover:bg-gray-100 transition-all"
-                  >
-                    La Discipline — Je sais quoi faire, mais je ne le fais pas
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleSelectOption(
-                        'methode',
-                        'La Méthode — Je bosse dur, mais les résultats ne suivent pas'
-                      )
-                    }
-                    className="p-4 border border-gray-200 text-left text-sm hover:border-black hover:bg-gray-100 transition-all"
-                  >
-                    La Méthode — Je bosse dur, mais les résultats ne suivent pas
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleSelectOption(
-                        'orientation',
-                        "L'Orientation — Je suis perdu, je ne sais pas quelle direction prendre"
-                      )
-                    }
-                    className="p-4 border border-gray-200 text-left text-sm hover:border-black hover:bg-gray-100 transition-all"
-                  >
-                    L&apos;Orientation — Je suis perdu, je ne sais pas quelle direction
-                    prendre
-                  </button>
-                </div>
-              )}
             </div>
           ))}
           {isLoading && (
@@ -233,7 +199,7 @@ Si tu es là, c'est que tu veux plus que ce que le système te propose. C'est qu
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="Écris ton message..."
+            placeholder="Ton prénom..."
             className="flex-1 p-4 border border-gray-200 text-[15px] outline-none focus:border-black transition-colors"
           />
           <button
@@ -241,7 +207,7 @@ Si tu es là, c'est que tu veux plus que ce que le système te propose. C'est qu
             disabled={isLoading}
             className="px-6 py-4 bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors disabled:opacity-50"
           >
-            Envoyer
+            Commencer
           </button>
         </div>
       </div>

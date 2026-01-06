@@ -15,7 +15,7 @@ export default function FAQSection() {
     {
       question: 'Est-ce que ça fonctionne vraiment ?',
       answer:
-        "La méthode est basée sur des principes de neurosciences validés. J'ai utilisé cette méthode pour passer du 93 à Princeton. J'ai formé plus de 2000 élèves. La seule variable inconnue, c'est toi. Si tu appliques, ça marche.",
+        "La méthode est basée sur des principes de neurosciences validés. J'ai utilisé cette méthode pour passer du 95 à Princeton. J'ai formé plus de 2000 élèves. La seule variable inconnue, c'est toi. Si tu appliques, ça marche.",
     },
     {
       question: "J'ai déjà essayé plein de méthodes...",
